@@ -95,6 +95,9 @@ li {
       width: 96%;
       padding: 2px 6px;
       border: 2px solid #41b080;
+      &:focus {
+        outline: 1px solid #41b080;
+      }
     }
   }
   .todo-actions {
