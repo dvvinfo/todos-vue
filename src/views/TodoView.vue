@@ -1,14 +1,25 @@
-
 <template>
   <main>
     <h1>Create Todo</h1>
-    <todo-creator/>
+    <todo-creator @create-todo="createTodo" />
   </main>
 </template>
 
 <script setup>
-import TodoCreator from '../components/TodoCreator.vue';
+import { ref } from "@vue/reactivity";
+import { uid } from "uid";
+import TodoCreator from "../components/TodoCreator.vue";
 
+const todoList = ref([]);
+
+const createTodo = (todo) => {
+  todoList.value.push({
+    id: uid(),
+    todo: todo,
+    isCompleted: null,
+    isEditing: null,
+  });
+};
 </script>
 
 <style lang="scss" scoped>
