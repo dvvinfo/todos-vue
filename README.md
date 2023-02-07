@@ -1,6 +1,6 @@
 # todos
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue Todos is a CRUD To do tracking application created for a Vue 3
 
 Track your daily task's using this to do tracker with abilities to save,
 complete, edit & delete todos.
