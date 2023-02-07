@@ -18,12 +18,17 @@
       <Icon icon="noto-v1:sad-but-relieved-face" />
       <span>You have no todo's to complete! Add one!</span>
     </p>
+    <p v-if="todoComputed && todoList.length > 0" class="todos-msg">
+      <Icon icon="noto-v1:party-popper" />
+      <span>You have completed all your todos!</span>
+    </p>
+    
   </main>
 </template>
 
 <script setup>
 import { ref } from "@vue/reactivity";
-import { watch } from "@vue/runtime-core";
+import { computed, watch } from "@vue/runtime-core";
 import { uid } from "uid";
 import { Icon } from "@iconify/vue";
 import TodoCreator from "../components/TodoCreator.vue";
@@ -40,6 +45,10 @@ watch(
     deep: true,
   }
 );
+
+const todoComputed = computed(() => {
+  return todoList.value.every((todo) => todo.isCompleted)
+})
 
 const fetchTodoList = () => {
   const savedTodoList = JSON.parse(localStorage.getItem("todoList"));
